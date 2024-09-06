@@ -47,8 +47,8 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying frontend and backend services'
-                    'docker run -d -p 82:82 frontend:latest'
-                    'docker run -d -p 3002:3002 backend:latest'
+                    'docker run -d -p 82:80 frontend:latest'
+                    'docker run -d -p 3002:3000 backend:latest'
                 }
             }
         }
