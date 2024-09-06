@@ -7,7 +7,7 @@ pipeline {
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
-                    userRemoteConfigs: [[url: 'https://github.com/DaudCloud-sudo/Microservice-CI-CD-Pipeline.git']]
+                    userRemoteConfigs: [[url: 'git@github.com:prash315/Microservice-CI-CD-Pipeline.git']]
                 ])
             }
         }
@@ -16,7 +16,7 @@ pipeline {
             steps {
                 dir('frontend') {
                     script {
-                        bat 'docker build -t frontend:latest .'
+                        'docker build -t frontend:latest .'
                     }
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('backend') {
                     script {
-                        bat 'docker build -t backend:latest .'
+                        'docker build -t backend:latest .'
                     }
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
                 dir('backend') {
                     script {
                         echo 'Running backend tests - Python-unittest for backend functionality'
-                        echo 'Test run sucessfully' 
+                        echo 'Test run sucessfully'
                     }
                 }
             }
@@ -47,8 +47,8 @@ pipeline {
             steps {
                 script {
                     echo 'Deploying frontend and backend services'
-                    bat 'docker run -d -p 80:80 frontend:latest'
-                    bat 'docker run -d -p 3000:3000 backend:latest'
+                    'docker run -d -p 82:82 frontend:latest'
+                    'docker run -d -p 3002:3002 backend:latest'
                 }
             }
         }
